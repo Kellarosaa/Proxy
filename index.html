@@ -7,55 +7,42 @@
     <title>Proxy Website</title>
 </head>
 <body>
-    <h1>Proxy Website</h1>
     <form id="searchForm">
-        <input type="text" id="urlInput" placeholder="Enter URL">
-        <button type="submit">Go</button>
+        <input type="text" id="searchInput" placeholder="Enter website URL">
+        <button type="submit">Search</button>
     </form>
-    <div id="result"></div>
-
+    
     <script>
         document.getElementById('searchForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            let url = document.getElementById('urlInput').value;
-            let modifiedUrl = '/service/' + url;
-            document.getElementById('result').innerHTML = `<a href="${modifiedUrl}" target="_blank">${modifiedUrl}</a>`;
+            let searchQuery = document.getElementById('searchInput').value;
+            let finalUrl = '/service/url/' + searchQuery;
+            window.open(finalUrl, '_blank');
         });
     </script>
 </body>
 </html>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    form {
-        margin-bottom: 10px;
-    }
-    input {
-        padding: 5px;
-        width: 300px;
-    }
-    button {
-        padding: 5px 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #0056b3;
-    }
-</style>
-<script>
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        let url = document.getElementById('urlInput').value;
-        if (url.trim() === '') {
-            alert('Please enter a valid URL');
-            return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Website</title>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Enter website URL">
+    <button onclick="openWebsite()">Search</button>
+    
+    <script>
+        function openWebsite() {
+            let searchQuery = document.getElementById('searchInput').value;
+            let finalUrl = '/service/url/' + searchQuery;
+            
+            fetch(finalUrl)
+                .then(response => response.text())
+                .then(data => window.open(data, '_blank'));
         }
-        let modifiedUrl = '/service/' + url;
-        document.getElementById('result').innerHTML = `<a href="${modifiedUrl}" target="_blank">${modifiedUrl}</a>`;
-    });
-</script>
+    </script>
+</body>
+</html>
