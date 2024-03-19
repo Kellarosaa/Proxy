@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Proxy</title>
-    <script>
-        function redirectToProxy() {
-            const inputUrl = document.getElementById('url').value;
-            const proxyUrl = '/service/' + inputUrl;
-            window.location.href = proxyUrl;
-        }
-    </script>
-</head>
-<body>
-    <h1>Website Proxy</h1>
-    <form onsubmit="redirectToProxy(); return false;">
-        <label for="url">Enter URL:</label>
-        <input type="text" id="url" name="url" placeholder="Enter URL">
-        <button type="submit">Go</button>
-    </form>
-</body>
-</html>
+<!-- Include Google API script -->
+<script src="https://www.google.com/jsapi"></script>
+
+<script>
+    google.load('search', '1', {language: 'en'});
+    google.setOnLoadCallback(initialize);
+
+    function initialize() {
+        const searchControl = new google.search.SearchControl();
+        searchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+        const webSearch = new google.search.WebSearch();
+        searchControl.addSearcher(webSearch);
+        searchControl.draw(document.getElementById('result'));
+        searchControl.execute(modifiedUrl);
+    }
+</script>
+
 
