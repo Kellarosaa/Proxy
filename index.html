@@ -18,7 +18,7 @@
         document.getElementById('searchForm').addEventListener('submit', function(event) {
             event.preventDefault();
             let url = document.getElementById('urlInput').value;
-            let modifiedUrl = '/service/example.com/' + url;
+            let modifiedUrl = '/service/' + url;
             document.getElementById('result').innerHTML = `<a href="${modifiedUrl}" target="_blank">${modifiedUrl}</a>`;
         });
     </script>
