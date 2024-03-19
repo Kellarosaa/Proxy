@@ -55,7 +55,7 @@
             alert('Please enter a valid URL');
             return;
         }
-        let modifiedUrl = '/service/example.com/' + url;
+        let modifiedUrl = '/service/' + url;
         document.getElementById('result').innerHTML = `<a href="${modifiedUrl}" target="_blank">${modifiedUrl}</a>`;
     });
 </script>
