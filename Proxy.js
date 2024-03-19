@@ -1,15 +1,13 @@
-const urlHandler = {
-  get: function(target, prop) {
-    if (prop === 'url') {
-      return target[prop];
-    }
-    return `example.com/service/${target[prop]}`;
-  }
-};
+// HTML
+<form id="urlForm">
+    <input type="text" id="urlInput" placeholder="Enter URL">
+    <button type="submit">Add Service</button>
+</form>
 
-const urlProxy = new Proxy({ url: '' }, urlHandler);
-
-// Usage
-urlProxy.url = 'new-url';
-console.log(urlProxy.url); // Output: example.com/service/new-url
-
+// JavaScript
+document.getElementById('urlForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const url = document.getElementById('urlInput').value;
+    const modifiedUrl = url + '/service/example.com';
+    console.log(modifiedUrl);
+});
