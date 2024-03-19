@@ -16,4 +16,4 @@ const urlProxy = new Proxy({ url: '' }, urlHandler);
 
 // Usage
 urlProxy.url = 'special chars & symbols';
-console.log(urlProxy.url); // Output: example.com/service/special%20chars%20%26%20symbols
+console.log(urlProxy.url); // Output: example.com/service/www.google.com
